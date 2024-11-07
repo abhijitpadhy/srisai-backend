@@ -5,6 +5,7 @@ const path = require("path");
 const cors = require("cors");
 const multer = require("multer"); // Import multer
 require("dotenv").config(); // Import dotenv to use environment variables
+const sendEmail = require('./sendEmail.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
