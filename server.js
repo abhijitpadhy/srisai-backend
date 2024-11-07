@@ -5,8 +5,7 @@ const path = require("path");
 const cors = require("cors");
 const multer = require("multer"); // Import multer
 require("dotenv").config(); // Import dotenv to use environment variables
-const sendEmail = require('./sendEmail.js');
-
+const sendEmail = require('./sendEmail');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -44,7 +43,7 @@ app.post("/send-email", upload, async (req, res) => {
     return res.status(400).send("Phone number must be exactly 10 digits and contain only numbers.");
   }
 
-  // 2. Name should not exceed 15 characters and should not contain links
+  // 2. Name should not exceed 15 characters and should not contain links or special characters
   const nameRegex = /^[a-zA-Z\s]+$/; // Only letters and spaces
   if (name.length > 15) {
     return res.status(400).send("Name should not exceed 15 characters.");
